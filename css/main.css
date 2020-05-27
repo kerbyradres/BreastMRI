@@ -1,0 +1,79 @@
+#lesionList button.active {
+	background-color: #c9302c;
+	border-color: #ec971f;
+	border-style: solid;
+	/*font-weight: 900;*/
+}
+
+button.lesions {
+	margin: 1px !important;
+}
+
+.addrem {
+	margin-top: 10px;
+}
+
+#divLesion button {
+	border: solid 1px #485563;
+}
+
+.sz {
+	width: 3.6em;
+	max-width: 100%;
+	text-align: center;
+}
+
+#inputLoc {
+	width: 100%;
+	max-width: 5em;
+	text-align: center;
+}
+
+#divMass, #divNME {
+	display: none;
+}
+
+#textareaReport {
+	max-width: 70em;
+	height: 17em;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	padding: 5px;
+	background-color: #ebebeb;
+	color: #000000;
+	overflow-y: auto;
+	font-weight: 400;
+	-moz-user-select: text;
+	-khtml-user-select: text;
+	-webkit-user-select: text;
+	-o-user-select: text;
+	user-select: text;
+}
+
+input {
+	font-weight: 400;
+	font-size: 12px !important;
+}
+
+h1 {
+	text-align: center;
+}
+
+img {
+	max-height: 100%;
+	max-width: 100%;
+	margin: auto;
+}
+
+.popover {
+	font-weight: 300;
+	max-width: 30%;
+}
+
+.unselectable {
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}

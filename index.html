@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<HEAD>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+
+	<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<title>Breast MRI Report Generator</title>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-58003719-1', 'auto');
+		ga('require', 'displayfeatures');
+		ga('send', 'pageview');
+	</script>
+</HEAD>
+
+<BODY>
+
+<div class="h1 container">Breast MRI Report Generator</div>
+<hr>
+
+<!-- TOP ROW -->
+<div class="container unselectable" id="topRow">
+	<div class="row">
+
+	<!-- LEFT SIDE -->
+		<div id="left" class="col-xs-3 col-md-2 col-lg-2">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<legend>Lesion #</legend>
+					<section id="lesionList">
+						<button class="btn btn-default lesions active" type="radio" id="lesion1">#1</button>
+					</section>
+
+					<div>
+						<button class="btn btn-success addrem" id="btnAddLesion">+</button>
+						<button class="btn btn-danger addrem" id="btnRemLesion">-</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- RIGHT SIDE -->
+		<div id="right" class="col-xs-9 col-md-10 col-lg-10">
+			<!-- LESION TYPE -->
+			<div id="divLesion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<legend>Type of lesion</legend>
+						<div class="btn-group" id="lesionType">
+							<button class="btn btn-primary" type="radio" value="Mass" id="btnMass">Mass</button>
+							<button class="btn btn-primary" type="radio" value="NME" id="btnNME">Non-mass enhancement</button>
+						</div>
+					</div>
+					<div class="panel-heading" id="divSizeLoc">
+						<input type="text" placeholder="size" id="inputSize0" class="input-sm sz"></input> x
+						<input type="text" placeholder="size" id="inputSize1" class="input-sm sz"></input> x
+						<input type="text" placeholder="size" id="inputSize2" class="input-sm sz"></input>
+						cm in the
+						<div class="btn-group" id="lesionSide">
+							<button class="btn btn-danger" type="radio" value="left" id="btnLeft">Left</button>
+							<button class="btn btn-danger" type="radio" value="right" id="btnRight">Right</button>
+						</div>
+						breast
+						<input type="text" placeholder="e.g. 3" id="inputLoc" class="input-sm"></input>
+						o'clock
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- TOP ROW -->
+
+<!-- enclose the main pathology type divs -->
+<section id="lesionSection">
+
+<!-- MASS -->
+<div class="container unselectable" id="divMass">
+	<legend><span></span>Mass</legend>
+	<div class="panel panel-default">
+
+		<!-- MASS-T2 SIGNAL -->
+		<div class="panel-heading">
+			<h2 class="panel-title">T2 signal</h2>
+		</div>
+		<div class="panel-body">
+			<div class="btn-group" id="mt2">
+				<button class="btn btn-warning" type="radio" value="hypointense">Hypointense</button>
+				<button class="btn btn-warning" type="radio" value="isointense">Isointense</button>
+				<button class="btn btn-warning" type="radio" value="hyperintense">Hyperintense</button>
+			</div>
+		</div>
+
+		<!-- MASS-SHAPE -->
+		<div class="panel-heading">
+			<h2 class="panel-title">Shape</h2>
+		</div>
+		<div class="panel-body">
+			<div class="btn-group" id="shape">
+				<button class="btn btn-success" type="radio" value="round">Round</button>
+				<button class="btn btn-success" type="radio" value="oval">Oval</button>
+				<button class="btn btn-success hover" type="radio" value="irregular">Irregular</button>
+			</div>
+		</div>
+
+		<!-- MASS-MARGIN -->
+		<div class="panel-heading">
+			<h2 class="panel-title">Margin</h2>
+		</div>
+		<div class="panel-body">
+			<div class="btn-group" id="margin">
+				<button class="btn btn-primary" type="radio" value="circumscribed margins">Circumscribed</button>
+				<button class="btn btn-primary hover" type="radio" value="irregular margins">Irregular</button>
+				<button class="btn btn-primary hover" type="radio" value="spiculated margins">Spiculated</button>
+			</div>
+		</div>
+
+		<!-- MASS-INTERNAL ENHANCEMENT -->
+		<div class="panel-heading">
+			<h2 class="panel-title">Internal enhancement</h2>
+		</div>
+		<div class="panel-body">
+			<div class="btn-group" id="menht">
+				<button class="btn btn-info" type="radio" value="homogeneous enhancement">Homogeneous</button>
+				<button class="btn btn-info" type="radio" value="heterogeneous enhancement">Heterogeneous</button>
+				<button class="btn btn-info" type="radio" value="rim enhancement">Rim enhancement</button>
+				<button class="btn btn-info" type="radio" value="dark internal septations">Dark internal septations</button>
+			</div>
+		</div>
+
+		<!-- MASS-KINETICS -->
+		<div class="panel-heading">
+			<h2 class="panel-title">Kinetic Curve</h2>
+		</div>
+		<div class="panel-body">
+			<div class="container btn-group" id="minitial">
+				<div>Initial phase:</div>
+				<button class="btn btn-danger" type="radio" value="slow">Slow</button>
+				<button class="btn btn-danger" type="radio" value="gradual">Gradual</button>
+				<button class="btn btn-danger" type="radio" value="rapid">Rapid</button>
+			</div>
+			<div class="container btn-group" id="mdelayed">
+				<div>Delayed phase:</div>
+				<button class="btn btn-danger" type="radio" value="that persists">Persistent</button>
+				<button class="btn btn-danger" type="radio" value="that plateaus">Plateau</button>
+				<button class="btn btn-danger" type="radio" value="with washout">Washout</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- MASS -->
+
+<!-- NON-MASS ENHANCEMENT -->
+<div class="container unselectable" id="divNME">
+	<legend><span></span>Non-mass enhancement</legend>
+	<div class="panel panel-default">
+
+		<!-- NME-T2 SIGNAL -->
+		<div class="panel-heading">
+			<h2 class="panel-title">T2 signal</h2>
+		</div>
+		<div class="panel-body">
+			<div class="btn-group" id="nt2">
+				<button class="btn btn-warning" type="radio" value="hypointense">Hypointense</button>
+				<button class="btn btn-warning" type="radio" value="isointense">Isointense</button>
+				<button class="btn btn-warning" type="radio" value="hyperintense">Hyperintense</button>
+			</div>
+		</div>
+
+		<!-- NME-DISTRIBUTION -->
+		<div class="panel-heading">
+			<h2 class="panel-title">Distribution</h2>
+		</div>
+		<div class="panel-body">
+			<div class="btn-group" id="dist">
+				<button class="btn btn-success" type="radio" value="focal">Focal</button>
+				<button class="btn btn-success" type="radio" value="linear">Linear</button>
+				<button class="btn btn-success hover" type="radio" value="segmental">Segmental</button>
+				<button class="btn btn-success" type="radio" value="regional">Regional</button>
+				<button class="btn btn-success" type="radio" value="multiple regions of">Multiple regions</button>
+				<button class="btn btn-success hover" type="radio" value="diffuse">Diffuse</button>
+			</div>
+		</div>
+
+		<!-- NME-INTERNAL ENHANCEMENT -->
+		<div class="panel-heading">
+			<h2 class="panel-title">Internal enhancement</h2>
+		</div>
+		<div class="panel-body">
+			<div class="btn-group" id="nenht">
+				<button class="btn btn-info" type="radio" value="homogeneous">Homogeneous</button>
+				<button class="btn btn-info" type="radio" value="heterogeneous">Heterogeneous</button>
+				<button class="btn btn-info" type="radio" value="clumped">Clumped</button>
+				<button class="btn btn-info" type="radio" value="clustered ring">Clustered ring</button>
+			</div>
+		</div>
+
+		<!-- NME-KINETICS -->
+		<div class="panel-heading">
+			<h2 class="panel-title">Kinetic Curve</h2>
+		</div>
+		<div class="panel-body">
+			<div class="container btn-group" id="ninitial">
+				<div>Initial phase:</div>
+				<button class="btn btn-danger" type="radio" value="slow">Slow</button>
+				<button class="btn btn-danger" type="radio" value="gradual">Gradual</button>
+				<button class="btn btn-danger" type="radio" value="rapid">Rapid</button>
+			</div>
+			<div class="container btn-group" id="ndelayed">
+				<div>Delayed phase:</div>
+				<button class="btn btn-danger" type="radio" value="that persists">Persistent</button>
+				<button class="btn btn-danger" type="radio" value="that plateaus">Plateau</button>
+				<button class="btn btn-danger" type="radio" value="with washout">Washout</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- NON-MASS ENHANCEMENT -->
+</section>
+
+
+<!-- REPORT -->
+<div class="container unselectable" id="divReport">
+	<div class="editable" id="textareaReport" contenteditable="true"></div>
+	<button class="btn btn-success" id="btnSelectAll">
+		<strong>Select All</strong>
+	</button>
+	<span class="label label-default">
+		Ctrl+C to copy
+	</span>
+</div>
+
+<!-- SHOW HINTS -->
+<div class="container unselectable" id="divHints">
+	<input type="checkbox" id="cbHints" checked><label for="cbHints" class="h4">Show Hints</label>
+</div>
+
+<hr>
+<FOOTER>
+	<div class="container">
+		<p>&copy; 2015 <a href="mailto:patrickdo@gmail.com?Subject=Breast%20MRI%20Report%20Generator">Patrick Do</a> and Jennifer Trinh Leung</p>
+		<p><a href="http://www.acr.org/~/media/ACR/Documents/PDF/QualitySafety/Resources/BIRADS/Posters/BIRADS%20Reference%20Card_web_F.pdf" target="new">BI-RADS 5 Quick Reference Card</a></p>
+	</div>
+</FOOTER>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+
+</BODY>
+</html>
